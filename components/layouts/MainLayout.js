@@ -1,14 +1,17 @@
-import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
+import { Platform, SafeAreaView, StatusBar, StyleSheet } from 'react-native'
+import tw from 'tailwind-react-native-classnames'
 
-const MainLayout = () => {
+export const MainLayout = (props) => {
   return (
-    <View>
-      <Text>MainLayout</Text>
-    </View>
+    <SafeAreaView style={[tw`bg-white h-full`, styles.androidSafeArea]}>
+      {props.children}
+    </SafeAreaView>
   )
 }
 
-export default MainLayout
-
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+  androidSafeArea: {
+    paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0
+  },
+})
