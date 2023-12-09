@@ -1,12 +1,12 @@
 import React from 'react'
-
-import { StyleSheet, Text, SafeAreaView, Platform, StatusBar, View, Image } from 'react-native'
+import { View, Image } from 'react-native'
 import tw from 'tailwind-react-native-classnames'
 import NavOptions from '../components/NavOptions'
+import { MainLayout } from '../components/layouts/MainLayout'
 
 const HomeScreen = () => {
   return (
-    <SafeAreaView style={[tw`bg-white h-full`, styles.androidSafeArea]}>
+    <MainLayout >
       <View style={tw`p-5`}>
         <Image
           style={[
@@ -21,14 +21,8 @@ const HomeScreen = () => {
         />
         <NavOptions />
       </View>
-    </SafeAreaView>
+    </MainLayout>
   )
 }
 
 export default HomeScreen
-
-const styles = StyleSheet.create({
-  androidSafeArea: {
-    paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0
-  }
-})
