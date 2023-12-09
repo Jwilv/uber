@@ -1,5 +1,6 @@
 import { StyleSheet, Text, TextInput, View } from 'react-native'
 import React from 'react'
+import SearchResults from './SearchResults'
 
 export default function SearchLocation() {
     return (
@@ -8,13 +9,13 @@ export default function SearchLocation() {
                 placeholder='Search for Location'
                 style={styles.input}
             />
+            <SearchResults /> 
         </View>
     )
 }
 
 const styles = StyleSheet.create({
     input: {
-        backgroundColor: 'white',
         padding: 5,
         paddingLeft: 10,
         borderRadius: 10,
