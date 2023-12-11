@@ -3,10 +3,8 @@ import React, { useState } from 'react'
 import tw from 'tailwind-react-native-classnames'
 import MapView, { Marker } from 'react-native-maps';
 import polyline from '@mapbox/polyline';
-import MapboxGeocoding from '@mapbox/mapbox-sdk/services/geocoding';
 import { MainLayout } from '../components/layouts/MainLayout';
 
-const mapboxClient = MapboxGeocoding({ accessToken: 'sk.eyJ1IjoibXJ3aWx2IiwiYSI6ImNscHB4ejBwejAybnEya2s4ZjV1Z2NnZjIifQ.uN1cXDshYEetXTCk69CnEQ' });
 
 // sk.eyJ1IjoibXJ3aWx2IiwiYSI6ImNscHB4ejBwejAybnEya2s4ZjV1Z2NnZjIifQ.uN1cXDshYEetXTCk69CnEQ
 
@@ -17,17 +15,6 @@ const MapScreen = () => {
     longitude: -58.39712,
   });
 
-  const response = async () => {
-    const response = await mapboxClient.forwardGeocode({
-      query: 'temperley',
-      types: ['place'],
-    }).send();
-
-    console.log('result :');
-    console.log(response.body.features[0].geometry);
-  }
-
-  response()
 
 
 
