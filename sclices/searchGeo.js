@@ -6,7 +6,7 @@ const initialState = {
 
 const locationSlice = createSlice({
     initialState,
-    name: 'searchLocations',
+    name: 'searchGeo',
     reducers: {
         setLocations: (state, action) => ({
             ...state,
