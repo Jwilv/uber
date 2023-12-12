@@ -7,7 +7,7 @@ export const store = configureStore({
         // nav: navSlice.reducer
         nav: navReducer,
         // locations: locationSlice.reducer
-        searchLocations: searchGeoReducer.reducer
+        searchGeo: searchGeoReducer
     }
 });
 

@@ -1,13 +1,24 @@
 import { StyleSheet, View } from 'react-native'
 import React from 'react'
 import CardLocation from './CardLocation'
+import { useSelector } from 'react-redux';
 
 export default function SearchResults() {
+
+    const locations = useSelector(state => state.searchGeo.locations);
+
     return (
         <View style={styles.container}>
-            <CardLocation location='Location 1' />
-            <CardLocation location='Location 2' />
-            <CardLocation />
+            {
+                locations.length === 0
+                ?
+                null
+                :
+                locations.map((location) => (
+                    <CardLocation key={location.id} location={location.place_name} />
+                ))
+            }
+
         </View>
     )
 }

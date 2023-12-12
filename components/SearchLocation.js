@@ -2,6 +2,8 @@ import { StyleSheet, Text, TextInput, View } from 'react-native'
 import React, { useState } from 'react'
 import SearchResults from './SearchResults'
 import { getLocationByName } from '../services/mapbox'
+import { useDispatch, useSelector } from 'react-redux'
+import { selectLocations, setLocations } from '../sclices/searchGeo'
 
 
 
@@ -9,9 +11,11 @@ export default function SearchLocation() {
 
     const [inputValue, setInputValue] = useState('')
 
+    const dispatch = useDispatch();
 
-    const handleSubmit = async() => {
+    const handleSubmit = async () => {
         const data = await getLocationByName('temperley');
+        dispatch(setLocations(data));
     }
 
     const handleChange = (e) => {

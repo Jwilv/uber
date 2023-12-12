@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { useSelector } from "react-redux";
 
 const initialState = {
     locations: [],
@@ -8,10 +9,9 @@ const locationSlice = createSlice({
     initialState,
     name: 'searchGeo',
     reducers: {
-        setLocations: (state, action) => ({
-            ...state,
-            [state.locations]: action.payload,
-        }),
+        setLocations: (state, action) => {
+            state.locations = action.payload;
+        },
         deleteLocations: (state) => ({
             ...state,
             [state.locations]: initialState.locations,
@@ -21,6 +21,6 @@ const locationSlice = createSlice({
 
 export const { setLocations, deleteLocations } = locationSlice.actions;
 
-export const selectLocations = (state) => state.searchLocations.locations;
+export const selectLocations = (state) => state;
 
 export default locationSlice.reducer
