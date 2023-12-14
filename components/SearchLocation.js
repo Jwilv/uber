@@ -14,7 +14,7 @@ export default function SearchLocation() {
     const dispatch = useDispatch();
 
     const handleSubmit = async () => {
-        const data = await getLocationByName('temperley');
+        const data = await getLocationByName(inputValue);
         dispatch(setLocations(data));
     }
 
