@@ -7,7 +7,7 @@ export const getLocationByName = async (location = '') => {
 
     const response = await mapboxClient.forwardGeocode({
         query: location,
-        types: ['place'],
+        types: ['place', 'address', 'neighborhood']
     }).send();
 
     return response.body.features.map(
