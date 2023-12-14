@@ -1,21 +1,7 @@
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React from 'react'
-import { useDispatch } from 'react-redux'
-import { setOrigin } from '../sclices/navSlice';
-import { setMenuOriginStatus } from '../sclices/uiSlice';
 
-const CardLocation = ({ location, coordinates }) => {
-
-    const dispatch = useDispatch();
-
-    const handlePress = () => {
-        dispatch(setOrigin({
-            location,
-            coordinates
-        }));
-
-        dispatch(setMenuOriginStatus(false));
-    }
+const CardLocation = ({ location, handlePress }) => {
 
     return (
         <View>

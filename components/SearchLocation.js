@@ -2,8 +2,8 @@ import { StyleSheet, Text, TextInput, View } from 'react-native'
 import React, { useState } from 'react'
 import SearchResults from './SearchResults'
 import { getLocationByName } from '../services/mapbox'
-import { useDispatch, useSelector } from 'react-redux'
-import { selectLocations, setLocations } from '../sclices/searchGeo'
+import { useDispatch } from 'react-redux'
+import { setLocations } from '../sclices/searchGeo'
 import { setMenuOriginStatus } from '../sclices/uiSlice'
 
 
