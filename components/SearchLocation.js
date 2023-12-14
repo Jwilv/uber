@@ -4,6 +4,7 @@ import SearchResults from './SearchResults'
 import { getLocationByName } from '../services/mapbox'
 import { useDispatch, useSelector } from 'react-redux'
 import { selectLocations, setLocations } from '../sclices/searchGeo'
+import { setMenuOriginStatus } from '../sclices/uiSlice'
 
 
 
@@ -16,6 +17,7 @@ export default function SearchLocation() {
     const handleSubmit = async () => {
         const data = await getLocationByName(inputValue);
         dispatch(setLocations(data));
+        dispatch(setMenuOriginStatus(true))
     }
 
     const handleChange = (e) => {

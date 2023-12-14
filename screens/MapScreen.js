@@ -16,7 +16,7 @@ const MapScreen = () => {
 
   const [cors, setCors] = useState({
     latitude: coordinates[1],
-    longitude: coordinatesup[0],
+    longitude: coordinates[0],
   });
 
 
