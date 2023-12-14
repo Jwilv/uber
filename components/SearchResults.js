@@ -17,7 +17,7 @@ export default function SearchResults() {
                 null
                 :
                 locations.map((location) => (
-                    <CardLocation key={location.id} location={location.place_name} cordiantes={location.center} />
+                    <CardLocation key={location.id} location={location.place_name} coordinates={location.center} />
                 ))
             }
 

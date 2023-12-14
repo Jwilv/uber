@@ -1,7 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    origin: [],
+    origin: {
+        location : '',
+        coordinates : [],
+    },
     destination: [],
     travelTimeInformation: null,
 };

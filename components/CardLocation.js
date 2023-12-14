@@ -3,12 +3,15 @@ import React from 'react'
 import { useDispatch } from 'react-redux'
 import { setOrigin } from '../sclices/navSlice';
 
-const CardLocation = ({ location, cordiantes }) => {
+const CardLocation = ({ location, coordinates }) => {
 
     const dispatch = useDispatch();
 
     const handlePress = () => {
-        dispatch(setOrigin(cordiantes));
+        dispatch(setOrigin({
+            location,
+            coordinates
+        }));
     }
 
     return (

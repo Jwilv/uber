@@ -12,11 +12,11 @@ import { selectOrigin } from '../sclices/navSlice';
 
 const MapScreen = () => {
 
-  const origin = useSelector(selectOrigin);
+  const { coordinates } = useSelector(selectOrigin);
 
   const [cors, setCors] = useState({
-    latitude: origin[1],
-    longitude: origin[0],
+    latitude: coordinates[1],
+    longitude: coordinatesup[0],
   });
 
 
