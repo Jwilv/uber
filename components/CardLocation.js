@@ -1,10 +1,19 @@
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React from 'react'
+import { useDispatch } from 'react-redux'
+import { setOrigin } from '../sclices/navSlice';
 
-const CardLocation = ({ location = 'Location Name' }) => {
+const CardLocation = ({ location, cordiantes }) => {
+
+    const dispatch = useDispatch();
+
+    const handlePress = () => {
+        dispatch(setOrigin(cordiantes));
+    }
+
     return (
         <View>
-            <TouchableOpacity >
+            <TouchableOpacity onPress={handlePress}>
                 <Text style={styles.item}>{location}</Text>
             </TouchableOpacity>
             <View style={styles.line} />

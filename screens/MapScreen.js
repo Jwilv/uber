@@ -4,15 +4,19 @@ import tw from 'tailwind-react-native-classnames'
 import MapView, { Marker } from 'react-native-maps';
 import polyline from '@mapbox/polyline';
 import { MainLayout } from '../components/layouts/MainLayout';
+import { useSelector } from 'react-redux';
+import { selectOrigin } from '../sclices/navSlice';
 
 
 // sk.eyJ1IjoibXJ3aWx2IiwiYSI6ImNscHB4ejBwejAybnEya2s4ZjV1Z2NnZjIifQ.uN1cXDshYEetXTCk69CnEQ
 
 const MapScreen = () => {
 
+  const origin = useSelector(selectOrigin);
+
   const [cors, setCors] = useState({
-    latitude: -34.775882,
-    longitude: -58.39712,
+    latitude: origin[1],
+    longitude: origin[0],
   });
 
 

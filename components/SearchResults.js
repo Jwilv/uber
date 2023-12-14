@@ -7,6 +7,8 @@ export default function SearchResults() {
 
     const locations = useSelector(state => state.searchGeo.locations);
 
+    console.log(locations);
+
     return (
         <View style={styles.container}>
             {
@@ -15,7 +17,7 @@ export default function SearchResults() {
                 null
                 :
                 locations.map((location) => (
-                    <CardLocation key={location.id} location={location.place_name} />
+                    <CardLocation key={location.id} location={location.place_name} cordiantes={location.center} />
                 ))
             }
 
