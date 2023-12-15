@@ -3,17 +3,20 @@ import React from 'react'
 import CardLocation from './CardLocation'
 import { useDispatch, useSelector } from 'react-redux';
 import { selectMenuOrigin, setMenuOriginStatus } from '../sclices/uiSlice';
-import { setDestination, setOrigin } from '../sclices/navSlice';
+import { selectDestination, selectOrigin, setDestination, setOrigin, setRoutes } from '../sclices/navSlice';
+import { getRoute } from '../services/routeMap';
 
 export default function SearchResults({ isDestination = false }) {
 
     const locations = useSelector(state => state.searchGeo.locations);
 
-    const menuOrigin = useSelector(selectMenuOrigin)
+    const menuOrigin = useSelector(selectMenuOrigin);
+
+    const origin = useSelector(selectOrigin);
 
     const dispatch = useDispatch();
 
-    const handlePress = (location) => {
+    const handlePress = async(location) => {
         isDestination
             ?
             dispatch(setDestination({
@@ -26,7 +29,12 @@ export default function SearchResults({ isDestination = false }) {
                 coordinates: location.center
             }))
 
-        dispatch(setMenuOriginStatus(false));
+            if (isDestination) {
+                const route = await getRoute(origin.coordinates, location.center);
+                dispatch(setRoutes(route)); 
+            }
+
+            dispatch(setMenuOriginStatus(false));
     }
 
     return (

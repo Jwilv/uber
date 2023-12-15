@@ -1,11 +1,11 @@
 import { StyleSheet, View } from 'react-native'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import tw from 'tailwind-react-native-classnames'
 import MapView, { Marker, Polyline } from 'react-native-maps';
 import polyline from '@mapbox/polyline';
 import { MainLayout } from '../components/layouts/MainLayout';
 import { useSelector } from 'react-redux';
-import { selectDestination, selectOrigin } from '../sclices/navSlice';
+import { selectDestination, selectOrigin, selectRoutes } from '../sclices/navSlice';
 import SearchLocation from '../components/SearchLocation';
 import SearchResults from '../components/SearchResults';
 
@@ -16,6 +16,8 @@ const MapScreen = () => {
 
   const { coordinates: coordinatesOrigin } = useSelector(selectOrigin);
   const { coordinates: coordinatesDestination } = useSelector(selectDestination);
+
+  const routeCoordinates = useSelector(selectRoutes);
 
   const markerDestination = {
     latitude: coordinatesDestination[1],
@@ -28,15 +30,12 @@ const MapScreen = () => {
     longitude: coordinatesOrigin[0],
   });
 
+  useEffect(() => {
+    console.log(routeCoordinates);
+  }, [routeCoordinates])
 
 
 
-  const routeDecoded = polyline.decode("sxxwFfkpbMmmX`np@knE~ifDat[jc{@tfPhc`GuvPz`i@fo@vk|AjlWra}@{uNf_c@bdKjzd@ab_@xvyA_lKpb}B`_@|}|FnpMfu|@giXn_^}kAv`sBktWzmnAz|IlxqB_vF|wdAook@~whCajFplcFazWni|@{BfecGxbc@x}eBqiAl~jCpqQzi`Bj{`@gg@bznA~y{A`en@teSpqWjn`@wvf@rdoE");
-  const routeCoordinates = routeDecoded.map((coordinate) => ({
-    latitude: coordinate[0],
-    longitude: coordinate[1],
-  }))
-  console.log(routeCoordinates.length);
   return (
 
     <MainLayout>
@@ -52,7 +51,6 @@ const MapScreen = () => {
         >
           <Marker coordinate={cors} />
           {
-
             routeCoordinates.length > 0 ? <Polyline coordinates={routeCoordinates} strokeWidth={2} strokeColor="blue" /> : null
           }
           {
