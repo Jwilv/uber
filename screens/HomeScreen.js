@@ -4,6 +4,7 @@ import tw from 'tailwind-react-native-classnames'
 import NavOptions from '../components/NavOptions'
 import { MainLayout } from '../components/layouts/MainLayout'
 import SearchLocation from '../components/SearchLocation'
+import SearchResults from '../components/SearchResults'
 
 const HomeScreen = () => {
   return (
@@ -20,7 +21,9 @@ const HomeScreen = () => {
           ]}
           source={{ uri: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Uber_logo_2018.svg/2560px-Uber_logo_2018.svg.png" }}
         />
-        <SearchLocation />
+
+          <SearchLocation />
+          <SearchResults />
         <NavOptions />
       </View>
     </MainLayout>

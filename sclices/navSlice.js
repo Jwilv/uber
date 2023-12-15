@@ -5,7 +5,10 @@ const initialState = {
         location : '',
         coordinates : [],
     },
-    destination: [],
+    destination: {
+        location : '',
+        coordinates : [],
+    },
     travelTimeInformation: null,
 };
 

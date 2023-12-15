@@ -33,7 +33,6 @@ export default function SearchLocation() {
                 onChange={handleChange}
                 onSubmitEditing={handleSubmit}
             />
-            <SearchResults />
         </View>
     )
 }
