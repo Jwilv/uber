@@ -8,6 +8,7 @@ import { useSelector } from 'react-redux';
 import { selectDestination, selectOrigin, selectRoutes } from '../sclices/navSlice';
 import SearchLocation from '../components/SearchLocation';
 import SearchResults from '../components/SearchResults';
+import { TravelCard } from '../components/TravelCard';
 
 
 // sk.eyJ1IjoibXJ3aWx2IiwiYSI6ImNscHB4ejBwejAybnEya2s4ZjV1Z2NnZjIifQ.uN1cXDshYEetXTCk69CnEQ
@@ -69,7 +70,7 @@ const MapScreen = () => {
             justifyContent: 'center',
           }}
         >
-          
+          <TravelCard /> 
         </View>
         <View style={{
           position: 'absolute',
