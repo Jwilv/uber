@@ -69,6 +69,15 @@ const MapScreen = () => {
             justifyContent: 'center',
           }}
         >
+          
+        </View>
+        <View style={{
+          position: 'absolute',
+          marginTop: 15,
+          width: '100%',
+          display: 'flex',
+          alignItems: 'center',
+        }}>
           <SearchLocation />
           <SearchResults isDestination={true} />
         </View>
@@ -89,7 +98,7 @@ const styles = StyleSheet.create({
     width: 300,
   },
   map: {
-    height: '60%',
+    height: '70%',
     width: '100%',
   }
 })
