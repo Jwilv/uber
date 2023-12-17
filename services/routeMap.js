@@ -1,5 +1,4 @@
 import polyline from '@mapbox/polyline';
-import axios from 'axios';
 
 export const getRoute = async (origin, destination) => {
 
@@ -8,6 +7,9 @@ export const getRoute = async (origin, destination) => {
     );
 
     const data = await response.json();
+
+    console.log(data.routes[0].duration);
+    console.log(data.routes[0].distance);
 
     const routeDecoded = polyline.decode(data.routes[0].geometry);
 
