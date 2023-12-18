@@ -1,4 +1,5 @@
 
 export const convertDistance = (distance) => {
-    return distance / 1000
+    const distanceInKm = distance / 1000
+    return `${distanceInKm} km`
 }
