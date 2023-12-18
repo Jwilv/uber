@@ -10,7 +10,10 @@ const initialState = {
         coordinates: [],
     },
     routes: [],
-    travelTimeInformation: null,
+    travelTimeInformation: {
+        distance: 0,
+        duration: 0,
+    },
 };
 
 export const navSlice = createSlice({
@@ -26,10 +29,10 @@ export const navSlice = createSlice({
         setTravelTimeInformation: (state, action) => {
             state.travelTimeInformation = action.payload;
         },
-        setRoutes : (state, action) => {
+        setRoutes: (state, action) => {
             state.routes = action.payload
         },
-        setTravel : (state, action) => {
+        setTravel: (state, action) => {
             state.travelTimeInformation = action.payload
         }
     },

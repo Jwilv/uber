@@ -31,10 +31,6 @@ const MapScreen = () => {
     longitude: coordinatesOrigin[0],
   });
 
-  useEffect(() => {
-    console.log(routeCoordinates);
-  }, [routeCoordinates])
-
 
 
   return (

@@ -78,7 +78,11 @@ export const TravelCard = () => {
                     top: 5,
                 }}
             >
-                {duration} | {distance}
+                {
+                    locationDestination
+                    &&
+                    `${distance} - ${duration}`
+                }
             </Text>
 
 
