@@ -8,13 +8,14 @@ export const getRoute = async (origin, destination) => {
 
     const data = await response.json();
 
-    console.log(data.routes[0].duration);
-    console.log(data.routes[0].distance);
-
     const routeDecoded = polyline.decode(data.routes[0].geometry);
 
-    return routeDecoded.map((coordinate) => ({
-        latitude: coordinate[0],
-        longitude: coordinate[1],
-    }))
+    return {
+        duration: data.routes[0].duration,
+        distance: data.routes[0].distance,
+        navegation: routeDecoded.map((coordinate) => ({
+            latitude: coordinate[0],
+            longitude: coordinate[1],
+        }))
+    }
 }

@@ -3,8 +3,9 @@ import React from 'react'
 import CardLocation from './CardLocation'
 import { useDispatch, useSelector } from 'react-redux';
 import { selectMenuOrigin, setMenuOriginStatus } from '../sclices/uiSlice';
-import { selectDestination, selectOrigin, setDestination, setOrigin, setRoutes } from '../sclices/navSlice';
+import { selectOrigin, setDestination, setOrigin, setRoutes, setTravel } from '../sclices/navSlice';
 import { getRoute } from '../services/routeMap';
+import { travelDataAdapter } from '../adapters/travelDataAdapter';
 
 export default function SearchResults({ isDestination = false }) {
 
@@ -30,8 +31,9 @@ export default function SearchResults({ isDestination = false }) {
             }))
 
             if (isDestination) {
-                const route = await getRoute(origin.coordinates, location.center);
-                dispatch(setRoutes(route)); 
+                const { navegation, distance, duration } = await getRoute(origin.coordinates, location.center);
+                dispatch(setTravel(travelDataAdapter(duration, distance)));
+                dispatch(setRoutes(navegation)); 
             }
 
             dispatch(setMenuOriginStatus(false));

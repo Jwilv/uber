@@ -7,7 +7,6 @@ import { selectDestination, selectOrigin } from '../sclices/navSlice';
 export const TravelCard = () => {
 
     const { location: locationOrigin } = useSelector(selectOrigin);
-    const { location: locationDestination } = useSelector(selectDestination);
 
     const originName = locationOrigin.split(' ').slice(0, 3).join(' ');
     const destinationName = locationDestination.split(' ').slice(0, 5).join(' ');
