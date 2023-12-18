@@ -2,11 +2,13 @@ import { Text, View } from 'react-native'
 import React, { Component } from 'react'
 import { Entypo } from '@expo/vector-icons';
 import { useSelector } from 'react-redux';
-import { selectDestination, selectOrigin } from '../sclices/navSlice';
+import { selectDestination, selectOrigin, selectTravel } from '../sclices/navSlice';
 
 export const TravelCard = () => {
 
     const { location: locationOrigin } = useSelector(selectOrigin);
+    const { location: locationDestination } = useSelector(selectDestination);
+    const { duration, distance } = useSelector(selectTravel);
 
     const originName = locationOrigin.split(' ').slice(0, 3).join(' ');
     const destinationName = locationDestination.split(' ').slice(0, 5).join(' ');
@@ -32,6 +34,8 @@ export const TravelCard = () => {
             >
                 <Text style={{ color: 'black', fontSize: 15 }}>{originName}</Text>
             </Entypo>
+
+
             <Text
                 style={{
                     fontSize: 20,
@@ -45,11 +49,13 @@ export const TravelCard = () => {
             >
                 - - - - - - - - -
             </Text>
+
+
             <Entypo
                 style={{
                     position: 'relative',
-                    top: 107,
-                    left: 46,
+                    top: 105,
+                    left: 47,
                     zIndex: 10,
                 }}
                 name="location"
@@ -62,6 +68,19 @@ export const TravelCard = () => {
                     <Text style={{ color: 'black', fontSize: 15 }}>&nbsp;{destinationName}</Text>
                 }
             </Entypo>
+
+            <Text
+                style={{
+                    position: 'relative',
+                    fontSize: 17,
+                    fontWeight: 'bold',
+                    left: 90,
+                    top: 5,
+                }}
+            >
+                {duration} | {distance}
+            </Text>
+
 
         </View>
     )
