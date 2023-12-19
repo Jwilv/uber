@@ -4,12 +4,17 @@ import { Entypo } from '@expo/vector-icons';
 import { useSelector } from 'react-redux';
 import { selectDestination, selectOrigin, selectTravel } from '../sclices/navSlice';
 import { ExitButton } from './ExitButton';
+import { useNavigation } from '@react-navigation/native';
+import TravelButton from './TravelButton';
 
 export const TravelCard = () => {
 
     const { location: locationOrigin } = useSelector(selectOrigin);
     const { location: locationDestination } = useSelector(selectDestination);
     const { duration, distance } = useSelector(selectTravel);
+
+
+    const navegation = useNavigation();
 
     const originName = locationOrigin.split(' ').slice(0, 3).join(' ');
     const destinationName = locationDestination.split(' ').slice(0, 5).join(' ');
@@ -21,7 +26,9 @@ export const TravelCard = () => {
             height: '100%',
         }}>
 
-            <ExitButton /> 
+            <ExitButton
+                onPress={() => navegation.navigate('HomeScreen')}
+            />
 
 
             <Entypo
@@ -87,6 +94,23 @@ export const TravelCard = () => {
                     `${distance} - ${duration}`
                 }
             </Text>
+
+            <View
+                style={{
+                    position: 'absolute',
+                    top : 200,
+                    left : 0,
+                    right : 0,
+                }}>
+
+                <TravelButton
+                    style={{
+                        backgroundColor: '#000',
+                    }}
+                    disabled={locationDestination ? false : true}
+                    text={'Viajar'}
+                />
+            </View>
 
 
         </View>
