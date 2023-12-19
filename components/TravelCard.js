@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import { Entypo } from '@expo/vector-icons';
 import { useSelector } from 'react-redux';
 import { selectDestination, selectOrigin, selectTravel } from '../sclices/navSlice';
+import { ExitButton } from './ExitButton';
 
 export const TravelCard = () => {
 
@@ -20,12 +21,14 @@ export const TravelCard = () => {
             height: '100%',
         }}>
 
+            <ExitButton /> 
+
 
             <Entypo
                 style={{
                     position: 'relative',
-                    top: 20,
-                    left: 44,
+                    left: 65,
+                    top: -10,
                     zIndex: 10,
                 }}
                 name="location-pin"
@@ -41,8 +44,8 @@ export const TravelCard = () => {
                     fontSize: 20,
                     fontWeight: 'bold',
                     position: 'relative',
-                    top: -90,
-                    left: -143,
+                    top: -120,
+                    left: -122,
                     transform: [{ rotate: '-90deg' }],
                     color: locationDestination ? "#3559E0" : "#D3D3D3",
                 }}
@@ -54,8 +57,8 @@ export const TravelCard = () => {
             <Entypo
                 style={{
                     position: 'relative',
-                    top: 105,
-                    left: 47,
+                    top: 75,
+                    left: 68,
                     zIndex: 10,
                 }}
                 name="location"
@@ -74,8 +77,8 @@ export const TravelCard = () => {
                     position: 'relative',
                     fontSize: 17,
                     fontWeight: 'bold',
-                    left: 90,
-                    top: 5,
+                    left: 120,
+                    top: -15,
                 }}
             >
                 {
