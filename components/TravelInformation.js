@@ -11,7 +11,6 @@ const TravelInformation = () => {
     const { location: locationOrigin } = useSelector(selectOrigin);
     const { location: locationDestination } = useSelector(selectDestination);
     const { duration, distance } = useSelector(selectTravel);
-;
 
     const originName = locationOrigin.split(' ').slice(0, 3).join(' ');
     const destinationName = locationDestination.split(' ').slice(0, 5).join(' ');
@@ -24,7 +23,7 @@ const TravelInformation = () => {
                 style={{
                     position: 'relative',
                     left: 65,
-                    top: -10,
+                    top: -4,
                     zIndex: 10,
                 }}
                 name="location-pin"
@@ -40,20 +39,20 @@ const TravelInformation = () => {
                     fontSize: 20,
                     fontWeight: 'bold',
                     position: 'relative',
-                    top: -120,
+                    top: -125,
                     left: -122,
                     transform: [{ rotate: '-90deg' }],
                     color: locationDestination ? "#3559E0" : "#D3D3D3",
                 }}
             >
-                - - - - - - - - -
+                - - - - - - - -
             </Text>
 
 
             <Entypo
                 style={{
                     position: 'relative',
-                    top: 75,
+                    top: 70,
                     left: 68,
                     zIndex: 10,
                 }}
@@ -73,8 +72,8 @@ const TravelInformation = () => {
                     position: 'relative',
                     fontSize: 17,
                     fontWeight: 'bold',
-                    left: 120,
-                    top: -15,
+                    left: 110,
+                    top: -33,
                 }}
             >
                 {
