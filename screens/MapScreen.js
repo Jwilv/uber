@@ -75,7 +75,7 @@ const MapScreen = () => {
           display: 'flex',
           alignItems: 'center',
         }}>
-          <SearchLocation />
+          <SearchLocation isDestination={true} />
           <SearchResults isDestination={true} />
         </View>
       </View>

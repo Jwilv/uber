@@ -2,15 +2,22 @@ import { StyleSheet, Text, TextInput, View } from 'react-native'
 import React, { useState } from 'react'
 import SearchResults from './SearchResults'
 import { getLocationByName } from '../services/mapbox'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { setLocations } from '../sclices/searchGeo'
 import { setMenuOriginStatus } from '../sclices/uiSlice'
+import { selectDestination, selectOrigin } from '../sclices/navSlice'
 
 
 
-export default function SearchLocation() {
+export default function SearchLocation({ isDestination = false}) {
 
-    const [inputValue, setInputValue] = useState('')
+    const { location: locationOrigin } = useSelector(selectOrigin);
+    const { location: locationDestination } = useSelector(selectDestination);
+
+    const originName = locationOrigin.split(' ').slice(0, 3).join(' ');
+    const destinationName = locationDestination.split(' ').slice(0, 5).join(' ');
+
+    const [inputValue, setInputValue] = useState( isDestination ? destinationName : originName);
 
     const dispatch = useDispatch();
 

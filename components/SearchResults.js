@@ -57,11 +57,9 @@ export default function SearchResults({ isDestination = false }) {
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: 'white',
         marginLeft: 10,
         marginBottom: 10,
         width: 330,
-        padding: 5,
     },
 
 })

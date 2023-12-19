@@ -4,11 +4,15 @@ import React from 'react'
 const CardLocation = ({ location, handlePress }) => {
 
     return (
-        <View>
+        <View
+            style={{
+                backgroundColor: '#fff',
+                margin: 1,
+            }}
+        >
             <TouchableOpacity onPress={handlePress}>
                 <Text style={styles.item}>{location}</Text>
             </TouchableOpacity>
-            <View style={styles.line} />
         </View>
     )
 }

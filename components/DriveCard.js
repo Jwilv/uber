@@ -1,8 +1,12 @@
 import { View, Text, TouchableOpacity } from 'react-native'
 import React from 'react'
 import { Image } from 'react-native-elements'
+import { useSelector } from 'react-redux'
+import { selectTravel } from '../sclices/navSlice'
 
-const DriveCard = ({title, desc, uri}) => {
+const DriveCard = ({ title, price, uri }) => {
+
+    const { distance } = useSelector(selectTravel)
     return (
         <View
             style={{
@@ -32,7 +36,7 @@ const DriveCard = ({title, desc, uri}) => {
                         position: 'absolute',
                         zIndex: 10,
                     }}
-                >{desc}</Text>
+                >{`${distance} Price $${Math.round(price * distance[0])}`}</Text>
 
 
                 <Image

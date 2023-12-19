@@ -16,6 +16,14 @@ export const TravelCard = () => {
 
     const { location: locationDestination } = useSelector(selectDestination);
 
+    const handleExit = () => {
+        if (isChoose) {
+            setIsChoose(false);
+            return
+        }
+        navegation.navigate('HomeScreen');
+    }
+
 
     return (
 
@@ -25,7 +33,7 @@ export const TravelCard = () => {
         }}>
 
             <ExitButton
-                onPress={() => navegation.navigate('HomeScreen')}
+                onPress={handleExit}
             />
 
             {
@@ -43,14 +51,27 @@ export const TravelCard = () => {
                     left: 0,
                     right: 0,
                 }}>
-                <TravelButton
-                    style={{
-                        backgroundColor: '#000',
-                    }}
-                    disabled={locationDestination ? false : true}
-                    onPress={() => setIsChoose(true)}
-                    text={'Viajar'}
-                />
+                {
+                    !isChoose
+                        ?
+                        <TravelButton
+                            style={{
+                                backgroundColor: '#000',
+                            }}
+                            disabled={locationDestination ? false : true}
+                            onPress={() => setIsChoose(true)}
+                            text={'Travel'}
+                        />
+                        :
+                        <TravelButton
+                            style={{
+                                backgroundColor: '#000',
+                            }}
+                            disabled={locationDestination ? false : true}
+                            onPress={() => setIsChoose(true)}
+                            text={'Choose'}
+                        />
+                }
             </View>
         </View>
     )
