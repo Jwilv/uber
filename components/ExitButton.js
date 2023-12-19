@@ -16,6 +16,7 @@ export const ExitButton = ({ onPress }) => {
             paddingLeft: 10,
             justifyContent: 'center',
             alignItems: 'center',
+            zIndex: 10
         }}>
             <TouchableOpacity>
                 <AntDesign

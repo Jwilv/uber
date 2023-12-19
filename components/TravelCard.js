@@ -1,23 +1,21 @@
 import { Text, View } from 'react-native'
-import React, { Component } from 'react'
-import { Entypo } from '@expo/vector-icons';
+import React, { useState } from 'react'
 import { useSelector } from 'react-redux';
-import { selectDestination, selectOrigin, selectTravel } from '../sclices/navSlice';
+import { selectDestination } from '../sclices/navSlice';
 import { ExitButton } from './ExitButton';
 import { useNavigation } from '@react-navigation/native';
 import TravelButton from './TravelButton';
+import TravelInformation from './TravelInformation';
+import DriversSelection from './DriversSelection';
 
 export const TravelCard = () => {
 
-    const { location: locationOrigin } = useSelector(selectOrigin);
-    const { location: locationDestination } = useSelector(selectDestination);
-    const { duration, distance } = useSelector(selectTravel);
-
+    const [isChoose, setIsChoose] = useState(false)
 
     const navegation = useNavigation();
 
-    const originName = locationOrigin.split(' ').slice(0, 3).join(' ');
-    const destinationName = locationDestination.split(' ').slice(0, 5).join(' ');
+    const { location: locationDestination } = useSelector(selectDestination);
+
 
     return (
 
@@ -30,89 +28,30 @@ export const TravelCard = () => {
                 onPress={() => navegation.navigate('HomeScreen')}
             />
 
-
-            <Entypo
-                style={{
-                    position: 'relative',
-                    left: 65,
-                    top: -10,
-                    zIndex: 10,
-                }}
-                name="location-pin"
-                size={40}
-                color="#3559E0"
-            >
-                <Text style={{ color: 'black', fontSize: 15 }}>{originName}</Text>
-            </Entypo>
-
-
-            <Text
-                style={{
-                    fontSize: 20,
-                    fontWeight: 'bold',
-                    position: 'relative',
-                    top: -120,
-                    left: -122,
-                    transform: [{ rotate: '-90deg' }],
-                    color: locationDestination ? "#3559E0" : "#D3D3D3",
-                }}
-            >
-                - - - - - - - - -
-            </Text>
-
-
-            <Entypo
-                style={{
-                    position: 'relative',
-                    top: 75,
-                    left: 68,
-                    zIndex: 10,
-                }}
-                name="location"
-                size={35}
-                color={locationDestination ? "#3559E0" : "#D3D3D3"}
-            >
-                {
-                    locationDestination
-                    &&
-                    <Text style={{ color: 'black', fontSize: 15 }}>&nbsp;{destinationName}</Text>
-                }
-            </Entypo>
-
-            <Text
-                style={{
-                    position: 'relative',
-                    fontSize: 17,
-                    fontWeight: 'bold',
-                    left: 120,
-                    top: -15,
-                }}
-            >
-                {
-                    locationDestination
-                    &&
-                    `${distance} - ${duration}`
-                }
-            </Text>
+            {
+                !isChoose
+                    ?
+                    <TravelInformation />
+                    :
+                    <DriversSelection />
+            }
 
             <View
                 style={{
                     position: 'absolute',
-                    top : 200,
-                    left : 0,
-                    right : 0,
+                    top: 200,
+                    left: 0,
+                    right: 0,
                 }}>
-
                 <TravelButton
                     style={{
                         backgroundColor: '#000',
                     }}
                     disabled={locationDestination ? false : true}
+                    onPress={() => setIsChoose(true)}
                     text={'Viajar'}
                 />
             </View>
-
-
         </View>
     )
 }
