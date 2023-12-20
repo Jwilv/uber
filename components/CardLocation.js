@@ -25,12 +25,10 @@ const styles = StyleSheet.create({
         borderBottomColor: '#adadad',
         marginBottom: 5,
         width: '100%',
-        alignSelf: 'start',
     },
     item: {
         fontSize: 15,
         padding: 5,
         marginBottom: 5,
-        alignSelf: 'start',
     }
 })
